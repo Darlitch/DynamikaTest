@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Ошибка</title>
+</head>
+
+<body>
+<nav>
+  <a href="/books">Книги</a> |
+  <a href="/clients">Клиенты</a> |
+  <a href="/loans/create">Выдача книг</a>
+</nav>
+
+<hr>
+
+<h1>Ошибка</h1>
+<p th:text="${message}"></p>
+<a href="/books">Вернуться на главную</a>
+</body>
+
+</html>
