@@ -21,8 +21,8 @@ public class BookLoanController {
 
     @GetMapping("/create")
     public String createForm(Model model) {
-        model.addAttribute("books", bookService.getAll());
-        model.addAttribute("clients", clientService.getAll());
+        model.addAttribute("books", bookService.getAllList());
+        model.addAttribute("clients", clientService.getAllList());
         return "loans/form";
     }
 

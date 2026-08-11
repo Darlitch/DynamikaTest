@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.example.entity.Book;
 import org.example.exception.ResourceNotFoundException;
 import org.example.repository.BookRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,12 @@ public class BookService {
                 .orElseThrow(() -> new ResourceNotFoundException("Book", id));
     }
 
-    public List<Book> getAll() {
+    public List<Book> getAllList() {
         return bookRepository.findAll();
+    }
+
+    public Page<Book> getAll(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     public Book update(Long id, Book book) {

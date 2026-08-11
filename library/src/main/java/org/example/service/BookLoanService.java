@@ -20,7 +20,7 @@ public class BookLoanService {
     private final ClientRepository clientRepository;
     private final BookLoanRepository bookLoanRepository;
 
-    public BookLoan create(Long bookId, Long clientId) {
+    public BookLoan create(Long clientId, Long bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book", bookId));
         Client client = clientRepository.findById(clientId)

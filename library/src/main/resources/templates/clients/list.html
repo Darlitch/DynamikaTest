@@ -33,5 +33,48 @@
     </td>
   </tr>
 </table>
+
+<div>
+  <a th:if="${clients.hasPrevious()}"
+     th:href="@{/clients(page=${clients.number - 1}, size=${clients.size})}">
+    Назад
+  </a>
+
+  <span>
+        Страница
+        <span th:text="${clients.number + 1}"></span>
+        из
+        <span th:text="${clients.totalPages}"></span>
+    </span>
+
+  <a th:if="${clients.hasNext()}"
+     th:href="@{/clients(page=${clients.number + 1}, size=${clients.size})}">
+    Вперёд
+  </a>
+</div>
+
+<form method="get" action="/clients">
+  <label>
+    Размер страницы:
+  </label>
+
+  <select name="size" onchange="this.form.submit()">
+    <option value="10"
+            th:selected="${clients.size == 10}">
+      10
+    </option>
+
+    <option value="20"
+            th:selected="${clients.size == 20}">
+      20
+    </option>
+
+    <option value="50"
+            th:selected="${clients.size == 50}">
+      50
+    </option>
+  </select>
+</form>
+
 </body>
 </html>

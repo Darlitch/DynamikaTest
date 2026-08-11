@@ -36,5 +36,46 @@
   </tr>
 </table>
 
+<div>
+  <a th:if="${books.hasPrevious()}"
+     th:href="@{/books(page=${books.number - 1}, size=${books.size})}">
+    Назад
+  </a>
+
+  <span>
+        Страница
+        <span th:text="${books.number + 1}"></span>
+        из
+        <span th:text="${books.totalPages}"></span>
+    </span>
+
+  <a th:if="${books.hasNext()}"
+     th:href="@{/books(page=${books.number + 1}, size=${books.size})}">
+    Вперёд
+  </a>
+</div>
+
+<form method="get" action="/books">
+  <label>
+    Размер страницы:
+  </label>
+  <select name="size" onchange="this.form.submit()">
+    <option value="10"
+            th:selected="${books.size == 10}">
+      10
+    </option>
+
+    <option value="20"
+            th:selected="${books.size == 20}">
+      20
+    </option>
+
+    <option value="50"
+            th:selected="${books.size == 50}">
+      50
+    </option>
+  </select>
+</form>
+
 </body>
 </html>
