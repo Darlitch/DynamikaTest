@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client form</title>
+</head>
+<body>
+<h1>Client</h1>
+
+<form th:object="${client}"
+      th:action="${client.id == null} ? @{/clients/create} : @{/clients/edit/{id}(id=${client.id})}"
+      method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <div>
+        <label>ФИО:</label>
+        <input type="text" th:field="*{fullName}">
+    </div>
+
+    <div>
+        <label>Дата рождения:</label>
+        <input type="date" th:field="*{birthDate}">
+    </div>
+
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

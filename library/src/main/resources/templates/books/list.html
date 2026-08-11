@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Книги</title>
+</head>
+<body>
+<nav>
+  <a href="/books">Книги</a> |
+  <a href="/clients">Клиенты</a> |
+  <a href="/loans/create">Выдача книг</a>
+</nav>
+<hr>
+
+<h1>Книги</h1>
+
+<a href="/books/create">Добавить книгу</a>
+<br>
+<br>
+
+<table border="1">
+  <tr>
+    <th>Название</th>
+    <th>Автор</th>
+    <th>ISBN</th>
+    <th> </th>
+  </tr>
+
+  <tr th:each="book : ${books}">
+    <td th:text="${book.title}"></td>
+    <td th:text="${book.author}"></td>
+    <td th:text="${book.isbn}"></td>
+    <td>
+      <a th:href="@{/books/edit/{id}(id=${book.id})}">Редактировать</a>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

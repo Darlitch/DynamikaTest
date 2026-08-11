@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Выдача книг</title>
+</head>
+<body>
+<nav>
+  <a href="/books">Книги</a> |
+  <a href="/clients">Клиенты</a> |
+  <a href="/loans/create">Выдача книг</a>
+</nav>
+<hr>
+
+<h1>Выдать книгу</h1>
+<br>
+<br>
+
+<form method="post" action="/loans/create">
+  <div>
+    <label>Клиент:</label>
+    <select name="clientId">
+      <option
+              th:each="client : ${clients}"
+              th:value="${client.id}"
+              th:text="${client.fullName}">
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <label>Книга:</label>
+    <select name="bookId">
+      <option
+              th:each="book : ${books}"
+              th:value="${book.id}"
+              th:text="${book.title}">
+      </option>
+    </select>
+  </div>
+
+  <button type="submit">Выдать</button>
+</form>
+</body>
+</html>

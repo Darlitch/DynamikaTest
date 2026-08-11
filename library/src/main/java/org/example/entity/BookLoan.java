@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class BookLoan {
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 
+    @Column(name = "taken_at", nullable = false)
     private LocalDateTime takenAt;
 
     public BookLoan(Client client, Book book) {

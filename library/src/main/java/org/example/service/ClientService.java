@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ClientService {
-    public final ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     public Client create(Client client) {
         return clientRepository.save(client);
