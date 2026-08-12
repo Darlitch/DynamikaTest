@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Getter
@@ -27,10 +29,12 @@ public class Client {
     )
     private Long id;
 
+    @NotBlank(message = "ФИО обязательно")
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "birth_date", nullable = false)
+    @NotNull(message = "Дата рождения обязательна")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 }

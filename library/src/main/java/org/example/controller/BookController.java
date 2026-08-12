@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/books")
@@ -28,7 +30,7 @@ public class BookController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Book book) {
+    public String create(@Valid @ModelAttribute Book book) {
         bookService.create(book);
         return "redirect:/books";
     }

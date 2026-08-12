@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
@@ -25,12 +26,15 @@ public class Book {
     )
     private Long id;
 
+    @NotBlank(message = "Название обязательно")
     @Column(name = "title", nullable = false)
     private String title;
 
+    @NotBlank(message = "Автор обязателен")
     @Column(name = "author", nullable = false)
     private String author;
 
+    @NotBlank(message = "ISBN обязателен")
     @Column(name = "isbn", nullable = false, unique = true)
     private String isbn;
 }

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
+
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/clients")
@@ -28,7 +30,7 @@ public class ClientController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Client client) {
+    public String create(@Valid @ModelAttribute Client client) {
         clientService.create(client);
         return "redirect:/clients";
     }
