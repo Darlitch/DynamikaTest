@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,7 +31,10 @@ public class ClientController {
     }
 
     @PostMapping("/create")
-    public String create(@Valid @ModelAttribute Client client) {
+    public String create(@Valid @ModelAttribute Client client, BindingResult result) {
+        if (result.hasErrors()) {
+            return "clients/form";
+        }
         clientService.create(client);
         return "redirect:/clients";
     }
@@ -56,7 +60,11 @@ public class ClientController {
 
 
     @PostMapping("/edit/{id}")
-    public String update(@PathVariable Long id, @ModelAttribute Client client) {
+    public String update(@PathVariable Long id, @ModelAttribute Client client,
+                         BindingResult result) {
+        if (result.hasErrors()) {
+            return "clients/form";
+        }
         clientService.update(id, client);
         return "redirect:/clients";
     }

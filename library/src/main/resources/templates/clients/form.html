@@ -5,6 +5,12 @@
     <title>Client form</title>
 </head>
 <body>
+<nav>
+    <a href="/books">Книги</a> |
+    <a href="/clients">Клиенты</a> |
+    <a href="/loans/create">Выдача книг</a> |
+    <a href="/api/loans">Выданные книги (JSON)</a>
+</nav>
 <h1>Client</h1>
 
 <form th:object="${client}"
@@ -16,11 +22,17 @@
     <div>
         <label>ФИО:</label>
         <input type="text" th:field="*{fullName}">
+        <p th:if="${#fields.hasErrors('fullName')}"
+           th:errors="*{fullName}">
+        </p>
     </div>
 
     <div>
         <label>Дата рождения:</label>
         <input type="date" th:field="*{birthDate}">
+        <p th:if="${#fields.hasErrors('birthDate')}"
+           th:errors="*{birthDate}">
+        </p>
     </div>
 
     <button type="submit">Сохранить</button>

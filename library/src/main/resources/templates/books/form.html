@@ -5,6 +5,12 @@
     <title>Добавление книги</title>
 </head>
 <body>
+<nav>
+    <a href="/books">Книги</a> |
+    <a href="/clients">Клиенты</a> |
+    <a href="/loans/create">Выдача книг</a> |
+    <a href="/api/loans">Выданные книги (JSON)</a>
+</nav>
 <h1>Книга</h1>
 
 <form th:object="${book}"
@@ -16,16 +22,25 @@
     <div>
         <label>Название:</label>
         <input type="text" th:field="*{title}">
+        <p th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}">
+        </p>
     </div>
 
     <div>
         <label>Автор:</label>
         <input type="text" th:field="*{author}">
+        <p th:if="${#fields.hasErrors('author')}"
+           th:errors="*{author}">
+        </p>
     </div>
 
     <div>
         <label>ISBN:</label>
         <input type="text" th:field="*{isbn}">
+        <p th:if="${#fields.hasErrors('isbn')}"
+           th:errors="*{isbn}">
+        </p>
     </div>
 
     <button type="submit">Сохранить</button>
