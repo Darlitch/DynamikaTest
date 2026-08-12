@@ -6,6 +6,7 @@ import org.example.exception.ResourceNotFoundException;
 import org.example.repository.BookRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +26,8 @@ public class BookService {
     }
 
     public List<Book> getAllList() {
-        return bookRepository.findAll();
+        return bookRepository.findAll(Sort.by(Sort.Order.asc("author"),
+                Sort.Order.asc("title")));
     }
 
     public Page<Book> getAll(Pageable pageable) {
